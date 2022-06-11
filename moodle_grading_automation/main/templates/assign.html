@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if exist_a > 0%}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Студент</th>
+        <th scope="col">Ссылка на ответ</th>
+        {% if assign_id == 4 %}
+        <th scope="col"></th>
+        {%endif%}
+      </tr>
+    </thead>
+    <tbody>
+    {% for answer in answers %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{answer.firstname}} {{answer.lastname}}</td>
+        <td><a href = "{{answer.url}}">{{answer.url}}</a></td>
+        {% if assign_id == 4 %}
+        <td>
+          <a class="btn btn-success ms-3" role="button" href="{% url 'screen_test' %}?answer_url={{answer.url}}&answer_firstname={{answer.firstname}}&answer_lastname={{answer.lastname}}">
+             Сравнить с эталоном 
+          </a>
+        </td>
+        {%endif%}
+      </tr>
+    {%endfor%}
+    </tbody>
+  </table>
+  {%endif%}
+  {% if exist_a > 1%}
+  <a class="btn btn-primary ms-3" role="button" href="{% url 'antiplagiarism' %}?assign_id={{request.GET.assign_id}}"> Проверить на схожесть </a>
+  {%endif%}
+
+  {% if exist_a == 0%}
+  <div class="alert alert-warning mt-2" role="alert">
+    На эту задачу не предоставлено ответов
+  </div>
+  {%endif%}
+  
+    
+{% endblock %}
+

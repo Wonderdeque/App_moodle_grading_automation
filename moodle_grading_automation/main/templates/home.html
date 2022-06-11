@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for assign in assigns %}
+        <div class = "alert alert-primary mt-2">
+            <a href="{% url 'assigns' %}?assign_id={{assign.id}}"><h3>{{ forloop.counter }}) {{assign.name}}</h3></a>
+        </div>
+    {% endfor %}
+    
+{% endblock %}
