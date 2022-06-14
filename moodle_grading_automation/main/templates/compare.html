@@ -1,0 +1,49 @@
+<head>
+	{% block head %}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Porto, Portugal</title>
+	<link rel="stylesheet" type="text/css" href="static/css/compare.css">
+	<script src="static/js/compare.js"></script>
+	{% endblock %}
+</head>
+<body style="height: 11152; display: block;">
+  <!-- Title header information -->
+  <div class="header-bar" style="margin-bottom: 100 ;">
+  	<div class="subject">
+  		<h2 class="subtitle">{{res}}</h2>
+  	</div>
+  	<div class="country-title">
+  		<h1 class="title-text">{{firstname}} {{lastname}}|Процент соответствия макету:{{res}}%</h1>
+  	</div>
+  </div>
+
+  <!-- Left and Right Image containers -->
+  <div class="container">
+  	<!-- Imagery name  -->
+  	<div id="leftTabs" class="tabColumn" style="position:fixed;">
+  		<div id="leftTabTitle" class="sideTabTitle"></div>
+  		<div id="leftLayersList" class="imageryLayersTabs tabContainer"></div>
+  	</div>
+
+  	<div id="rightTabs" class="tabColumn" style="position:fixed;">
+  		<div id="rightTabTitle" class="sideTabTitle"></div>
+  		<div id="rightLayersList" class="imageryLayersTabs tabContainer"></div>
+  	</div>
+
+  	<!-- Image slider -->
+  	<div id="sliderbox" class="img-container">
+  		<!-- Right Image -->
+  		<img class="fitcenter" id="img_right" src="static/compare_screenshots/etalon_screens/page.png" >
+  		<!-- Left image -->
+  		<div class="imgholder img-top">
+  			<img class="fitcenter" id="img_left" src="static/compare_screenshots/stud_screens/screenshot.png">
+  		</div>
+  		<span class="handle"></span>
+  	</div>
+
+  </div>
+
+</body>
+</html>

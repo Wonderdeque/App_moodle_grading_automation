@@ -40,6 +40,7 @@ def get_gits_answers(course_id,assignment_id):
                     # print(soup.find("a")["href"])
                     comp_name = [link['href'] for link in soup.find_all('a')]
                     if len(comp_name) > 1:
+                        
                         link = comp_name[1]
                     else:
                         link = comp_name[0]

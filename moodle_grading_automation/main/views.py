@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from main.modules.db_moodle_requests import get_gits_answers,get_assigns
 from main.modules.plagiarism_check import get_plagiarism_result_data
+from main.modules.screenshots_compare import get_match_points_and_diff_screen
 
 # Create your views here.
 
@@ -41,7 +42,10 @@ def screen_test(request):
         url = request.GET.get('answer_url')
         firstname = request.GET.get('answer_firstname')
         lastname = request.GET.get('answer_lastname')
-        return render(request,'screen_test.html',{'url':url,'firstname':firstname,'lastname':lastname})
+        img_a,img_b,img_diff,percentage_of_diff = get_match_points_and_diff_screen(url)
+        match_point_res = (1 - percentage_of_diff)*100
+        match_point_res = round(match_point_res)
+        return render(request,'compare.html',{'url':url,'firstname':firstname,'lastname':lastname, 'res':match_point_res})
     else:
         return redirect("/")
 
